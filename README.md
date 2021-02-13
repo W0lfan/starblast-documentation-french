@@ -812,18 +812,18 @@ This includes all properties defined in [`this.options`](#options), plus some ex
 | deposit_shield<br>spawning_shield<br>structure_shield | an array presenting the the stations' deposits/spawnings/small structures shield in the increasing level order |
 | deposit_regen<br>spawning_regen<br>structure_regen | an array presenting the the stations' deposits/spawnings/small structures regeneration in the increasing level order |
 
-### Assigning custom properties to some entities/objects
-You can assign properties into some game entities or objects as side notes/indicators
-#### Accessing and assigning
-Simply just call out their `custom` property (which is always an object) and assign properties to it.
+### Assigner des propriétés personalisées à des entités/objets
+Vous pouvez assigner des propriétés à des entités du jeu (ou des objects) comme les notes annexes et indicateurs.
+#### Accéder et assigner
+Faites simplement appel à la propriété `custom` (qui est toujours un object) et assignez lui des propriétés.
 
-#### Supported objects/entities
-* `game` object
-* all ships
-* all aliens
-* all collectibles
-* all asteroids
-#### Example
+#### Entités/Objets supportés
+* `game` objet
+* tous les vaisseaux
+* tous les extraterrestres (aliens)
+* toutes les armes secondaires (secondaries)
+* tous les astéroïdes
+#### Exemples
 ```js
 game.custom.hasMod = true // game object
 game.ships[0].custom.userScore = 6712 // ship entity
@@ -831,22 +831,21 @@ game.aliens[0].custom = {created: true, rating: "10stars"} // alien entity
 game.asteroids[0].custom = {init: true} // asteroid entity
 ```
 
-### Other game instances and methods
-#### Set custom maps in-game
-You can use `game.setCustomMap(<map pattern>)` to set custom map while the game is running
+### Autres instances de jeu et méthodes
+#### Mettre une carte customisée en jeu
+Vous pouvez utiliser `game.setCustomMap(<map pattern>)` pour mettre une carte customisée en jeu.
 
-where <map pattern> has the same format as [the custom map in `this.options`](#custom-asteroids-maps)
+Où <map pattern> a le même format que [la carte customisée dans `this.options`](#custom-asteroids-maps)
 
 #### Lock/unlock the mod from attracting new players
-Use `game.setOpen(true/false)` to lock/unlock the mod to be visible to players (only for [Modding Space](https://starblastio.gamepedia.com/Modding_Space) mods)
+Utilisez `game.setOpen(true/false)` pour fermer/ouvrir votre mod (visibilité par les joueurs) (seulement pour les mods du [Modding Space (https://starblastio.gamepedia.com/Modding_Space).
 
-There is also game boolean properties `game.is_open` is used to determine if the mod is open or not
+Il y a aussi des propriétés booléennes `game.is_open` est utiliser pour déterminer si le mod est ouvert ou pas.
 
-### Common problems and how to fix them
-#### Black screen issue
-In most cases you're getting a black screen after loading your mod cause of bad ship tree.
-
-Follow these rules to avoid it:
+### Problèmes communs et comment les fixer
+#### Problème de l'écran noir
+Dans la plupart des cas, votre écran est noir après que le mod ait chargé car votre arbre des vaisseaux contient une erreur.
+Suivez ces règles pour empêcher un écran noir:
 
 1. Votre arbre des vaisseaux doit avoir au moins un vaisseau de tier 1.
 1. Si votre arbre des vaisseaux a 2 vaisseaux de niveau 2, alors il faudra 1 vaisseau de niveau 1.
