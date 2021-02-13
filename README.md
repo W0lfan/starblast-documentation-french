@@ -632,13 +632,13 @@ List of accepted options:
 | crystal_drop | The crystal amount to be dropped when this alien is killed | None |
 | weapon_drop | The code of a collectible weapon to be dropped by this alien when killed | None |
 
-Here is the list of supported codes:
-| Code | Alien name |
+Voici la liste des codes d'extratrrestres (eliens) disponibles:
+| Code | Nom de l'extraterrestre |
 | - | - |
 | 10 | Chicken |
 | 11 | Crab |
 | 12 | Fortress |
-| 13 | Some weird new thingy |
+| 13 | Alien bizarre |
 | 14 | Candlestick |
 | 15 | Hirsute |
 | 16 | Piranha |
@@ -647,88 +647,91 @@ Here is the list of supported codes:
 | 19 | Saucer |
 | 20 | Final Boss |
 
-A new `Alien` object is immediately added to `game.aliens`; however it cannot be used before it has been assigned an id (positive integer) by the server.
+Un nouvel object `Alien`est immédiatement ajouter à `game.aliens` ; cependant, il ne peut pas être utilisé avant que le serveur ait assigné une id (nombre positif) à cet extraterrestre.
 #### Configuration
-Once an alien is live and has an assigned id, you can set options to it. For example:
+Une fois que le premier extraterrestre (alien) est en vie et qu'il a une id assignée, vous pouvez le modifier avec des options. Par exemple:
 ```
 > game.aliens[0].set({x:0,y:0});
 > █
 ```
-Will move the first alien in the list to the center of the map
+Cela va faire bouger le premier extraterrestre de la liste au centre de la carte.
 
 Accepted options when using `alien.set`:
-| Option | Description | Server response error message<br>(if improper) |
+| Option | Description |  Réponse du serveur si erreur<br>(if improper) |
 | - | - | - |
-| x | X coordinate | Wrong coordinate |
-| y | Y coordinate | Wrong coordinate |
-| vx | Velocity vector X component | Wrong coordinate |
-| vy | Velocity vector Y component | Wrong coordinate |
-| shield | Shield | Wrong shield value |
-| regen | Shield regen | Wrong regen value |
+| x | Coordonnées X | Wrong coordinate |
+| y | Coordonnées Y | Wrong coordinate |
+| vx | Vitesse dans une direction X | Wrong coordinate |
+| vy | Vitesse dans une direction Y | Wrong coordinate |
+| shield | Bouclier | Wrong shield value |
+| regen | Régénration du bouclier | Wrong regen value |
 | damage | Laser damage | Wrong damage value |
-| laser_speed | Laser speed | Wrong damage value |
-| rate | Firing rate | Wrong rate value |
-| kill | Set `kill: (any "truthy" value, e.g: true)` to destroy the alien | No violation |
+| laser_speed | Rapidité du laser | Wrong damage value |
+| rate | Nombre de tirs par seconde | Wrong rate value |
+| kill | Utilisez `kill: (any "truthy" value, e.g: true)` pour détruire une extraterrestre (alien) | No violation |
 
-### Collectibles
-You can spawn collectible weapons in the playfield
+### Armes secondaires
+Vous pouvez faire apparaitre des armes secondaires dans le champ de jeu.
 
-You can also find a collectible with specific id using `game.findCollectible(id)`, which returns an object represent the matched collectible or `null` (if there are no collectibles matching the provided id)
-#### Creation
-Here is an example:
+Vous pouvez aussi trouver une arme secondaire avec une id spécifique en utiliant `game.findCollectible(id)`, qui va renvoyer l'object représentant l'arme secondaire demandée, ou `null` s'il n'y a aucune arme secondaire avec l'id demandée.
+
+#### Création
+Voici un exemple:
 ```
 > game.addCollectible({code:10,x:0,y:0});
 > █
 ```
-This will add a new collectible pack of rockets to coordinates (0;0)
+Cela va ajouter une nouvelle arme secondaire (1 pack de 4 rockettes) aux coordonnées (0;0)
 
-Here is the list of supported codes:
+Voici la liste des codes d'armes secondaires disponibles:
 
-(Note: Server will response with `Incorrect data` when at least one input property value is improper)
+(Note: Le serveur va répondre par `Incorrect data` si au moins une de ces valeurs est fausse)
 | Code | Description |
 | - | - |
-| 10 | 4 rockets pack |
-| 11 | 2 missiles pack |
-| 12 | 1 torpedo |
-| 20 | 8 light mines pack |
-| 21 | 4 heavy mines pack |
-| 40 | Mining pod |
-| 41 | Attack pod |
-| 42 | Defense pod |
-| 90 | Energy refill |
-| 91 | Shield refill |
+| 10 | 1 pack de 4 rockettes |
+| 11 | Un pack de deux missiles |
+| 12 | 1 torpille |
+| 20 | Un pack de 8 mines légères |
+| 21 | Un pack de 4 mines lourdes|
+| 40 | Pod de minage |
+| 41 | Pod d'attacque |
+| 42 | Pod de défense |
+| 90 | Recharge de l'énergie (barre jaune)|
+| 91 | Recharge du bouclier |
 
-#### Accessing
-You can check the collectibles still available to collect in the playfield by using: `game.collectibles`
+#### Accès
+Vous pouvez voir les armes secondaires toujours disponibles à collecter dans le champ de jeu en utilisant: `game.collectibles`.
 
-### Asteroids
-You can access to the list of moving asteroids through the array `game.asteroids`
+### Astéroïdes
+Vous pouvez accéder à la liste des astéroïdes qui bougent par le array `game.asteroids`.
 
-You can also find an asteroid with specific id using `game.findAsteroid(id)`, which returns an object represent the matched asteroid or `null` (if there are no asteroids matching the provided id)
-#### Creation
-To create an asteroid, use `game.addAsteroid({ options })`.
+Vous pouvez aussi trouver un astéroïde avec une id spécifique en utilisant `game.findAsteroid(id)`, ce qui va renvoyer un object qui représente l'astéroîde voulut, ou `null` si il n'y a pas d'astéroïdes avec l'id donnée.
 
-Here is the list of accepted options:
+#### Création
+Pour créer un astéroïde, utilisez `game.addAsteroid({ options })`.
 
-(Note: Server will response with `Incorrect data` when at least one input property value is improper)
-| Option | Description | Default value<br>(if omitted) |
+Voici la liste des options acceptées:
+
+(Note: Le serveur va répondre par `Incorrect data` si au moins une de ces valeurs est fausse)
+| Option | Description | Valeur par défaut<br>(Si omis) |
 | - | - | - |
-| x | X coordinate | 0 |
-| y | Y coordinate | 0 |
-| vx | Velocity vector X component | 0 |
-| vy | Velocity vector Y component | 0 |
-| size | Size of the asteroid in the range [1-100] | 30 |
+| x | Coordonnée X | 0 |
+| y | Coordonnée Y | 0 |
+| vx | Vitesse de l'astéroïde dans une direction X | 0 |
+| vy | Vitesse de l'astéroïde dans une direction Y | 0 |
+| size | La taille de l'astéroide, pour un nombre entre [1-100] | 30 |
 
-A new `Asteroid` object is immediately added to `game.asteroids` ; however it cannot be used before it has been assigned an id (positive integer) by the server.
+Un nouvel `Asteroid` est un objet qui est immédiatement ajouté à `game.asteroids` ; cependant, il ne peut pas être utilisé sans qu'une id ne lui ait été assignée (nombre positif) par le serveur.
+
 #### Configuration
-Once an asteroid is live and has an assigned id, you can set options to it. For example:
+Une fois qu'un astéroïde est "en vie" et qu'il détient une id qui lui est assignée, vous pouvez lui apporter des modifications. Par exemple:
 ```
 > game.asteroids[0].set({x:0,y:0});
 > █
 ```
-Will move the first asteroid in the list to the center of the map
+Ceci va faire bouger le premier astéroïde de la liste des astéroïdes et va l'emmener au centre de la carte.
 
-Listes des options accéptées lorsque `asteroid.set` est utilisé:
+Listes des options acceptées lorsque `asteroid.set` est utilisé:
 | Option | Description | Réponse du serveur si erreur<br>(if improper) |
 | - | - | - |
 | x | coordonnée X  | Wrong coordinate |
