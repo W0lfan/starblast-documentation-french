@@ -3,6 +3,8 @@
 **Note:** Ceci est la version Github de la Documentation de Starblast, traduite en français par Wolfan.
 
 **ATTENTION: Il est très fortement conseillé de connaitre l'Anglais pour coder, le JavaSCript et le mod éditor étant en Anglais. Faites attention!**
+
+
 La version officielle, en Anglais, peut être trouvée ici: https://starblastio.gamepedia.com/Modding_Tutorial
 <details>
   <summary markdown="span">Contents</summary>
