@@ -172,51 +172,53 @@ You can stop your mod anytime by using command `stop`. Note that this will kill 
 Mod stopped
 > █
 ```
-#### Other terminal commands
+#### Autres commandes du terminal
 ##### `echo`
-Print any values to the terminal, can be used in both mod code (after mod started) and terminal
+Envoie n'importe quelle valeur dans le terminal, peut être utilisé dans le code du mod ou bien dans le terminal.
 
-Syntax: `echo(<item>)`
+Syntaxe: `echo(<item>)`
 ```
 > echo("Message from terminal!")
 Message from terminal!
 > █
 ```
 ##### `clear`
-Clear the the terminal, only available in terminal
+Enlève tous les messages du terminal. Ne marche que dans le terminal.
 
-Syntax: `clear`
+Syntaxe: `clear`
 ##### `help`
-Display help message inside the terminal, terminal use only
+Fait appraraitre le message d'aide dans le terminal. Ne marche que dans le terminal.
 
-Syntax: `help`
+Syntaxe: `help`
 
-### Main code parts
+### Parties du code principales
 #### Options
-##### Definition
-Stored in `this.options` is a data structure where you can set options for your custom, modded game. These options are used for initializing the game when you start your mod. Changing them while the mod is running does not affect the game.
+##### Définition
+`this.options` est une donnée structurée où vous pouvez mettre en place des optons pour votre partie customisée, moddée. Ces options sont utilisées pour initialiser la partie quand vous démarrer votre mod. Les changer quand le mod est encore en train de tourner n'affectera pas la partie.
+
 ##### Custom ships and custom tree
+Vous pouvez importer des vaisseaux faits dans l'éditeur de vaisseaux de Starblast. Dans cet éditeur, cliquez sur "mod export" pour exporter votre vaisseau sous un code JavaScript afin de l'utiliser dans l'éditeur de mode.
+Ensuite, copiez le et collez le dans l'éditeur de mod et ajoutez ceci:
 
-You can import ships made with Starblast Ship Editor. In the Ship Editor, use "Mod Export" feature to export a JavaScript code snippet for the modding interface. Then paste this snipped in the coding window and add this:
 ```js
-var myship_101 = "{ … … <this is your exported ship code> …";
+var myship_101 = "{ … … <le code de votre vaisseau exporté> …";
 
-var ships = [myship_101]; // add your ship to an array of ship
-
+var ships = [myship_101]; // ajouter votre vaisseau dans un array de vaisseaux
 this.options = {
   root_mode: "survival",
-  ships: ships,         // specifying a list of ships to complement / replace existing ships
-  reset_tree: true,     // set to true if you want to remove the original ship tree, false if you just want to replace some of the ships
+  ships: ships,         // ceci vous permet de spécifier les vaisseaux utiliser et remplace les vaisseaux actuels
+  reset_tree: true,     // mettez sur true si vous voulez supprimer tous les vaisseaux vanilla, ou false si vous voulez les garder
   map_size: 30
 };
 
 this.tick = function(game) {
 };
 ```
-Then run your mod. If your ship is set to level=1 model=1, your ship will replace the Fly. You can replace other ships in the tree in a similar way, using `reset_tree: false`. Or you can remove the original ship tree completely and provide a whole new one using `reset_tree: true`.
-##### Customizing the emote-chat system
-The vocabulary used for the emote-chat system can be customized by setting the field `vocabulary` in the game option
-as follows:
+Ensuite, lancer votre mod. Si votre vaisseau est mis sur level=1, model=1, votre vaissea replacera le Flt. Vous pouvez replacer d'autres vaisseaux de l'arbre de la même manière, en utilisant `reset_tree:false`. Ou vous pouvez supprimer l'arbre de navire original et en créant un nouveau en utilisant `reset_tree:true`.
+
+##### Customiser le chat d'émojis
+Le vocabulaire utilisé pour le système de chat par émote peut être customisé en mettant le champ `vocabulary` dans les options du jeu, comme suivant:
+
 ```js
 var vocabulary = [
       { text: "Hello", icon:"\u0045", key:"O" },
@@ -235,16 +237,16 @@ this.options = {
   // ...
 };
 ```
-This allows using Starblast built-in emote icons, which are listed here for reference: https://starblast.io/glyphs.html
+Cela vous permet d'utiliser le système de construction d'icones, qui sont listées ici: https://starblast.io/glyphs.html
 
-You can also use unicode icons, here is a good source for reference: https://unicode.org/emoji/charts/full-emoji-list.html
+Vous pouvez aussi utiliser des icones unicodes, voici une bonne source de référence: https://unicode.org/emoji/charts/full-emoji-list.html
 
-Note that wide unicode characters (using more than 2 bytes) require a specific Javascript syntax as shown in the example above (example: `\u{1F47B}`)
+Notez que les charactères unicodes larges (2bytes+) requierent une syntaxe JavaScript comme indiquée dans l'exemple ci-dessus (exemple: `\u{1F47B}`)
 
-##### Custom asteroids maps
-You can create a custom map of asteroids. This allows creating a maze for example. The custom map you provide is actually a JavaScript character string which is used to "paint" the map.
+##### Carte d'astéroïdes customisée
+Vous pouvez créer unen carte customisée d'astéroïdes. Cela vous permet de créer un labyrinthe par exemple. Cette carte customisée est en fait une chaine charactère de JavaScript qui "peint" la carte.
 
-For example:
+Par exemple:
 ```js
 var map =
 "999999999999999999999999999999\n"+
@@ -285,76 +287,76 @@ this.options = {
 }
 ```
 
-In the example above, 9 sets the biggest size of asteroid. You can use smaller values for adding smaller asteroids to the grid. Any value other than a digit will be interpreted as no asteroid. If your `map_size` is set to 30, make sure to create 30 lines and 30 columns, or you may get unpredictable results.
+Dans l'exemple ci-dessus, 9 donne la taille la plus grande des astéroîdes.  Vous pouvez utiliserdes valeurs plus petites pour ajouter des astéroïdes plus petits. TOutes les valeurs différentes d'un nombre entier seront interprétées comme aucun astéroïde. Si vous mettez l'option `map_size` à 30, faites attentions à créer 30 lignes et 30 colonnes, ou sinon, vous obtiendrez des résultats `[REDACTED]`.
 
-**Note:** Use `""` for blank custom map
+**Note:** Utilisez `""` pour une carte sans astéroïdes.
 
-You can use [Online Map Editor](https://bhpsngum.github.io/starblast/mapeditor/) (a community tool) to create, edit and export maps.
+Vous pouvez utiliser le [Online Map Editor](https://bhpsngum.github.io/starblast/mapeditor/) (a community tool) pour créer, éditer ou exporter des cartes.
 
-##### Other common options
-Most of the options are inherited from the usual custom games. A few more options have been added, specifically for modding (top of the list):
-| Option | Description | Default value<br>(if omitted) |
+##### Autres options communes
+La plupart des options viennent des parties personnalisées normales. Quelques options en plus ont été ajoutées, spécifiquement pour le modding (au début de la liste):
+| Option | Description | Valeur par défaut<br>(si omis) |
 | - | - | - |
-| root_mode | The mod to inherit from: "survival", "team", "invasion", "deathmatch", "battleroyale" (or unspecified) | Unspecified |
-| reset_tree | Set to true to remove the original ship tree | false |
-| ships | An array of ships to add to the tree | None |
-| map_size | Size of the map, range from 20 to 200 | 100 (survival)<br>80 (team and Battle Royale)<br>60 (unspecified)<br>30 (Invasion)<br>20 (deathmatch) |
-| soundtrack |"procedurality.mp3", "argon.mp3", "crystals.mp3", "red_mist.mp3, "civilisation.mp3" or "warp_drive.mp3" | None |
-| max_players | From 1 to 240 | 70 (team)<br>60 (survival)<br>40 (unspecified)<br>30 (Battle Royale)<br>20 (deathmatch)<br>6 (invasion) |
-| crystal_value | Float, from 0 to 10 | 2 (team)<br>0 (deathmatch and Battle Royale)<br>1 (others) |
-| lives | Number of lives, from 1 to 5 | 4 (team)<br>1 (deathmatch and Battle Royale)<br> 3 (others) |
-| max_level | Max level you can reach, from 1 to 7 | 7 |
-| friendly_colors | Serves to define teams; how many teams (or 0) | 3 (team)<br>1 (invasion)<br>0 (others) |
-| map_name | Name of the map | Auto-generated name |
-| survival_level | Level which triggers survival mode (8 for no trigger) | 7 (survival)<br>8 (others) |
-| starting_ship | Enter desired ship code: 101, 201, 404, etc. | 101 |
-| starting_ship_maxed | true or false | false |
-| asteroids_strength | 0 to 10 | 5 (deathmatch)<br>0.5 (Battle Royale)<br>1 (others) |
-| friction_ratio | 0 to 2 | 1 |
-| strafe | strafing speed factor, an integer from 0 to 1 | 0 |
-| speed_mod | 0 to 2 | 1.25 (deathmatch)<br>1.2 (survival and team)<br>1 (others) |
-| rcs_toggle | true or false | true |
-| map_id | Number in the range [0-9999] | Game id |
-| map_density | Density of the map | None |
-| weapon_drop | 0 to 1 (probability that an asteroid will drop a weapon) | 0 |
-| crystal_drop | percentage of gems can be collected when a ship drain gems | 0.5 (deathmatch)<br>1 (others) |
-| release_crystal | true/false for allowing/forbidding `[V]` to release gems | true (team)<br>false (others) |
-| mines_self_destroy | true or false | true |
-| mines_destroy_delay | all landed mines will be destroyed after this interval if no enemies triggered the mines (in [ticks](#unit)) | 3600 (Battle Royale)<br>18000 (others) |
-| healing_enabled | true or false | true (team)<br>false(others) |
-| healing_ratio | 0 to 2 | 1 |
-| shield_regen_factor | 0 to 2 | 1 |
-| power_regen_factor | 0 to 2 | 1 |
-| weapons_store | Set to false to remove access to the weapon store | true |
-| radar_zoom | Set value to 1, 2 or 4 | 2 |
-| auto_refill | When set to true, collecting an energy or shield pill immediately refills energy or shield ; the collected pill is not added to the active weapons | false |
+| root_mode | Le type de mode: "survival", "team", "invasion", "deathmatch", "battleroyale" (ou non-spécifié (`" "`)) | Unspecified |
+| reset_tree | Mettre sur `true` pour supprimer les vaisseaux vanilla déjà existant | false |
+| ships | Un array de vaisseaux à ajouter pour avoir un arbre de vaisseau personnalisé | None |
+| map_size | Taille de la carte, entre 20 et 200 | 100 (survie)<br>80 (équipe and Battle Royale)<br>60 (non-spécifié)<br>30 (Invasion)<br>20 (deathmatch) |
+| soundtrack |"procedurality.mp3", "argon.mp3", "crystals.mp3", "red_mist.mp3, "civilisation.mp3" ou "warp_drive.mp3" | None |
+| max_players | De 1 à 240 | 70 (équipe)<br>60 (survival)<br>40 (non-spécifié)<br>30 (Battle Royale)<br>20 (deathmatch)<br>6 (invasion) |
+| crystal_value | Nombre de gemmes lâchées par un astéroîde, de 0 à 10 | 2 (autres)<br>0 (deathmatch and Battle Royale)<br>1 (autres) |
+| lives | Nombres de vie, de 1 à 5 | 4 (autres)<br>1 (deathmatch and Battle Royale)<br> 3 (autres) |
+| max_level | Le niveau maximal que vous pouvez atteindre, de 1 à 7 | 7 |
+| friendly_colors | Permet de définir le nombre déquipe (ou 0) | 3 (team)<br>1 (invasion)<br>0 (autres) |
+| map_name | Nom de la carte | Auto-generated name |
+| survival_level | Niveau qui va activer le survival mode (8 pour aucune activation) | 7 (survival)<br>8 (autres) |
+| starting_ship | Mettre le vaisseau voulu lorsqu'un joueur rejoint la partie, il apparaitra dans ce vaisseau: 101, 201, 404, etc. | 101 |
+| starting_ship_maxed | true ou false | false |
+| asteroids_strength | 0 à 10 | 5 (deathmatch)<br>0.5 (Battle Royale)<br>1 (autres) |
+| friction_ratio | 0 à 2 | 1 |
+| strafe | facteur de vitesse de mitraillage, un entier de 0 à 1| 0 |
+| speed_mod | 0 ou 2 | 1.25 (deathmatch)<br>1.2 (survie et équipe)<br>1 (autres) |
+| rcs_toggle | true ou false | true |
+| map_id | Nombre entre [0-9999] | Game id |
+| map_density | Densité de la carte | None |
+| weapon_drop | 0 à 1 (probabilité qu'un astéroîde donne une arme secondaire) | 0 |
+| crystal_drop | Pourcentage de gemmes collectées quand ûn vaisseau lâche des gemmes | 0.5 (deathmatch)<br>1 (autres) |
+| release_crystal | true/false pour autoriser/empêcher `[V]` de donner des gemmes | true (équipe)<br>false (autres) |
+| mines_self_destroy | true ou false | true |
+| mines_destroy_delay | Toutes les mines seront détruites dans cette intervalle si un joueur ne les a pas déjà détruite (en [ticks](#unit)) | 3600 (Battle Royale)<br>18000 (autres) |
+| healing_enabled | true ou false | true (équipe)<br>false(autres) |
+| healing_ratio | 0 à 2 | 1 |
+| shield_regen_factor | 0 à 2 | 1 |
+| power_regen_factor | 0 à 2 | 1 |
+| weapons_store | Mettez sur `false` si vous souhaitez qu'il n'y ait pas de magasin à armes secondaires | true |
+| radar_zoom | Mettez la valeur sur 1,2 ou 4 | 2 |
+| auto_refill | Quand mis sur `true`, les recharges de bouclier et de générateur seront automatiquement utilisées, et le joueur n'aura pas à presser "ALT" pour les utiliser| false |
 | projectile_speed | Affects the speed of rockets, missiles and torpedoes; use 1 for default speed | 1 |
-| choose_ship | e.g. setting to `[301,302,303]` will let player choose a ship from these 3 ships before entering the game | None |
-| collider | enable/disable (true/false) collisions of player ships with anything | true |
+| choose_ship | exemple, mit sur `[301,302,303]` fera en sorte que les joueurs choisissent un vaisseau entre ces trois vaisseaux en entrant dans la partie | None |
+| collider | active/désactive (true/false) les collisions des vaisseaux avec quoi que ce soit | true |
 
 
-##### Survival mode specific options
-| Option | Description | Default value<br>(if omitted) |
+##### Options spécifiques du mode survie
+| Option | Description | Valeur par défaut<br>(si omis) |
 | - | - | - |
-| survival_time | When to trigger survival mode; 0 or a value in minutes | 60 |
+| survival_time | Le nombre de minutes avant le déclanchement du mode survie | 60 |
 
 
-##### Team mode specific options
-| Option | Description | Default value<br>(if omitted) |
+##### Spécifiques options pour le mode équipe
+| Option | Description | Valeur par défaut<br>(si omis) |
 | - | - | - |
-| hues | array of hue numbers for teams, with the same amount of elements as used for `friendly_colors` | Auto-generated hues |
-| station_regeneration | factor to apply to station shield regen | 1 |
-| station_size | size of the stations; integer from 1 to 5 | 2 |
-| station_crystal_capacity | factor to apply to the station crystal capacity, range [0.1,10] | 1 |
-| station_repair_threshold | part of the station crystal capacity that must be refilled to repair a module. In the range [0,1] | 0.25 |
-| auto_assign_teams | allow assigning players to a specific team (true) or let them choose the team themselves (false) | false |
+| hues | Array pour le nombre de couleurs par équipe, avec le même nombre d'éléments que dans `friendly_colors` | Auto-generated hues |
+| station_regeneration | Régénération de la station | 1 |
+| station_size | Grandeur des stations, allant de 1 à 5 | 2 |
+| station_crystal_capacity | Capacité de la station en terme de cristaux (cristaux utiles pour débloquer de nouveaux vaisseaux), pour un chiffre entre [0.1,10] | 1 |
+| station_repair_threshold | Le nombre de gemmes demandées pour réparer un module. Entre [0,1] | 0.25 |
+| auto_assign_teams | Empêcher les joueurs de choisir l'équipe qu'ils vont rejoindre (true) ou les laissez choisir (false) | false |
 
-##### Deatmatch mode specific options
-| Option | Description | Default value<br>(if omitted) |
+##### Options spécifiques du Deathmatch Pro
+| Option | Description | Valeur par défaut<br>(si omis) |
 | - | - | - |
-| ship_groups | an array containing some arrays, each of them representing one ship group (by name) available for selection<br>See the example below.<br>The longer the array is, the lower chance for each ship group being available in a single match | See [Deathmatch](https://starblastio.gamepedia.com/Deathmatch) for a list of default ship groups<br>**Note:** The mod won't run if `reset_tree` option is set to true |
-
-Example:
+| ship_groups | Un array contenant d'autres arrays, et chacun d'eux représente un groupe de vaisseaux (par nom) disponible pour la sélection.<br>Voir l'exemple ci-dessous<br>Le plus lond est un array, la plus petite chance pour chaque groupe de vaisseaux d'être disponible dans un seul match.
+ | Voir [Deathmatch](https://starblastio.gamepedia.com/Deathmatch) pour une liste de vaisseaux par défaut<br>**Note:** Le mod ne va pas fonctionner si `reset_tree`n'est pas mis sur `true` |
+Exemple:
 ```js
 ship_groups: [
   ["U-Sniper","Howler"],
@@ -362,11 +364,12 @@ ship_groups: [
 ]
 ```
 #### Ticking
-##### Definition
-Found in `this.tick` is a JavaScript function which is called 60 times per second. In this function’s body, you will be able to code specific actions that your mod needs to take automatically while the game is running. This function can be modified while the modded game is running and the changes will apply automagically.
-#### Events
-##### General
-Your mod can receive events through the function `this.event`:
+##### Définition
+Trouvé dans `this.tick`, c'est une fonction de JavaScrit qui est appellée 60 fois par seconde. Dans cette fonction, vous pourrez coder des actions spécifiques dont votre mod va prendre (effectuer) quand la partie est en cours. Cette fonction peut être modifiée quand une partie moddée est en cours et les changements s'appliqueront automatiquement.
+
+#### Evènements
+##### Général
+Votre mod peut recevoire des évènements par la fonction `this.event`:
 ```js
 this.event = function(event,game) {
   switch (event.name)
@@ -381,23 +384,25 @@ this.event = function(event,game) {
 } ;
 ```
 
-##### Available events
-| Event name | Description | Additional event fields |
+##### 2vènement disponibles
+| Nom de l'évènement | Description | Champs d'évènements additionnels |
 | - | - | - |
-| ship_spawned | A ship just spawned in game or respawned | event.ship |
-| ship_destroyed | A ship was just destroyed | event.ship, event.killer |
-| alien_destroyed | An alien was just killed | event.alien, event.killer |
-| asteroid_destroyed | An asteroid was just destroyed | event.asteroid, event.killer |
-| collectible_picked | A ship just picked a collectible item | event.collectible, event.ship |
+| ship_spawned | Un vaisseau vient d'apparaitre/de réapparaitre | event.ship |
+| ship_destroyed | Un vaisseau vient de se faire détruire | event.ship, event.killer |
+| alien_destroyed | Un extraterrestre vient d'être tué | event.alien, event.killer |
+| asteroid_destroyed | Un astéroïde vient d'être détruit | event.asteroid, event.killer |
+| collectible_picked | Un vaisseau a pris une arme secondaire | event.collectible, event.ship |
 ### Game step
-#### Definition
-Can be accessible through `game.step`, is an integer presenting game's duration
-#### Unit
-The unit of this value is tick, where 1 tick = 1/60 seconds
+#### Définition
+Peut être accessible par `game.step`, c'est un nombre entier montrant la durée du jeu.
 
-Which means that 60 ticks = 1 second, 120 ticks = 2 seconds and so on.
-#### Uses
-This code uses to set the first ship in the list to the center of the map in the first minute of the mod and reset its crystals every 5 seconds (assume that there is one ship staying from the start of the mod):
+#### Unité
+L'unité de cette valeur est le tick, où 1 tick = 1/60 secondes
+
+Ce qui veut dire que 60 ticks = 1 seconde, 120 ticks = 2 secondes et etc.
+
+#### Utilisation
+Ce code va faire en sorte que le premier vaisseau de la liste soit téléporté au centre de la carte à la première minute depuis que le mod a démarré et remet à 0 ses cristaux (on assume que il y a un vaisseau qui reste au début du mod):
 ```js
 this.tick = function (game)
 {
@@ -410,30 +415,32 @@ this.tick = function (game)
 }
 ```
 
-### Ships
-You can access to the list of ships (players) through the array `game.ships`
+### Vaisseaux
+Vous pouvez accéder à la liste des vaisseaux par l'array `game.ships`
 
-You can also find a ship with specific id using `game.findShip(id)`, which returns an object represent the matched ship or `null` (if there are no ships matching the provided id)
-#### Accessible fields
-You have read access to the ship’s main fields and options:
-| Field | Description |
+Vous pouvez aussi trouver un vaisseau avec une id spécifique en utiliant `game.findShip(id)`, qui va renvoyer l'object représentant le vaisseau demandé, ou `null` s'il n'y a aucun vaisseau avec l'id demandée.
+
+
+#### Champs accessibles
+Voici les différents champs et options auxquels vous pouvez accéder pour les vaisseaux:
+| Champ | Description |
 | - | - |
-| x | X coordinate |
-| y | Y coordinate |
-| vx | Velocity vector X component |
-| vy | Velocity vector Y component |
-| r | Rotation angle of the ship (in radian) |
-| name | player's name |
-| alive | Whether the ship is alive or destroyed |
-| type | Ship type code (e.g. 101) |
-| stats | Ship current stats upgrades, compiled into a single integer.<br>For example: 10012301 means the 8 stats upgrade levels are 1,0,0,1,2,3,0 and 1 |
-| idle | tells if the ship is in idle status or not |
-| team | the id of the team this ship is in |
-| score | player's score |
-| shield | current shield value |
-| generator | current generator value |
-| crystals | current crystals value |
-| healing | whether the ship's lasers are in healing mode or not |
+| x | coordonnée X  |
+| y | coordonnée Y  |
+| vx | Vitesse du vaisseau vers une coordonnée X |
+| vy | Vitesse du vaisseau vers une coordonnée Y|
+| r | Rotation du vaisseau |
+| name | Nom du joueur |
+| alive | Si le vaisseau est en vie ou non |
+| type |Le tier et le modèle du vaisseau, combiné en un seul nombre (e.g. 101) |
+| stats | Statistiques du vaisseau actuelles, compillé en un seul nombre.<br>Par exemple: 10012301 veut dire que  8 statistiques ont été améliorées: 1,0,0,1,2,3,0 et 1 |
+| idle | Dit si le ship est en idle mode ou non |
+| team |L'id de l'équipe dans laquelle est le vaisseau |
+| score | Score du joueur |
+| shield | Valeur du bouclier actuel |
+| generator | Valeur du générateur actuelle |
+| crystals | Nombre de cristaux actuels |
+| healing | Si les lasers du vaisseau sont en mode soigneur ou non |
 
 #### Configuration
 Vous pouvez mettre en place différentes options sur les vaisseaux. Par exemple:
@@ -613,7 +620,7 @@ Syntaxe: `ship.emptyWeapons()`
 ### Extraterrestres
 Vous pouvez accéder à la liste des extraterrestres par le array `game.aliens`
 
-Vous pouvez aussi trouver un extraterrestre avec une id spécifique en utiliant `game.findAlieb(id)`, qui va renvoyer l'object représentant l'extraterrestre demandé, ou `null` s'il n'y a aucun extraterrestre avec l'id demandée.
+Vous pouvez aussi trouver un extraterrestre avec une id spécifique en utiliant `game.findAlien(id)`, qui va renvoyer l'object représentant l'extraterrestre demandé, ou `null` s'il n'y a aucun extraterrestre avec l'id demandée.
 
 #### Création
 Pour créer un extraterrestre, utilisez `game.addAlien({ options })`
