@@ -157,7 +157,7 @@ mais pour les autres mods où il y a de la logique dans les fonctions tick ou le
 
 Les ticks vont commancer à marcher de moins en moins vite...
 
-Bientôt, tout lagera dans la partue, comme toutes les réactions sur les bouttons, la logique du code qui fait apparaitre quelque chose, etc.
+Bientôt, tout lagera dans la partie, comme toutes les réactions sur les bouttons, la logique du code qui fait apparaitre quelque chose, etc.
 
 Et....cela dépend de la complexité du mod mais cela peut faire crasher le mod en entier - localement, le serveur continuera à marcher, la partie aussie, mais le code actual ne fonctionnera plus et n'impactera plus la partie.
 
