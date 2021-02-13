@@ -533,23 +533,23 @@ Here is the list of UIComponent's accepted options:
 | shortcut | When the component is clickable, a keyboard shortcut allowing to trigger the click event | None |
 | components | gives a list (array) of graphical features to render within the component, which will be described below | Empty array |
 
-##### Subcomponents' accepted options
-| Option | Description | Default value (if omitted) |
+##### Options acceptées pour les sous-composants
+| Option | Description | Value par défaut (si omis) |
 | - | - | - |
-| type | type of the subcomponents<br>currently supported: "round", "text", "box" or "player" | None |
-| id ("player" type only) | id of the player associated with the subcomponent, which will be disapleyd as their name and badge (if exists) in the rendered subcomponent | None |
-| position | positions of the subcomponents, formatted as `[x,y,width,height]`<br>these subcomponents are meant within the main component coordinates | None |
-| value | value of the subcomponent, e.g `value:"Sample text"` | Empty string |
-| color | text color of the subcomponent, this can be a string with any color formats (hex, hsla, rgb, etc.), e.g `"#fff"` | None |
-| fill | background color of the subcomponent, same format as the `color` property | None |
-| width | width of the subcomponent's border (in percent) | 0 |
-| stroke | border color of the subcomponent, same format as the `color` property | None |
-| align | alignment of the texts inside the subcomponent<br>"left", "right" or "center" only | `"center"` |
+| type | Type de sous-composants<br>possibilités: "round" (rond), "text"(texte), "box" (cube, rectangle) or "player" | None |
+| id ("player" type only) | ce paramètre va montrer le badge et le pseudo du joueur associé à l'id | None |
+| position | position des sous-composants, de cette manière: `[x,y,width,height]`<br>Ces sous-composants sont dépendants de la position du composant principal| None |
+| value | Valeur du sous-composants, exemple: `value:"Sample text"` | Empty string |
+| color | Couleur du texte des sous-composants, ce peut être avec plusieurs types de couleurs (hex, hsla, rgb, etc.), e.g `"#fff"` | None |
+| fill | Couleur de fond du sous-composant, même format que la propriété `color` | None |
+| width | Largeur de la bordure du sous-composants (in percent) | 0 |
+| stroke | Couleur de la bordure du sous-composant, même format que la propriété `color` | None |
+| align | Alignement du texte dans le sous-composant<br>"left" (gauche), "right" (droite) ou "center" (centre) seulement | `"center"` |
 
-##### Combining with events
-The example below creates a warp button for every player, which can be clicked and results in the ship warping to another random location, also adding 3 seconds invulnerability to it:
+##### Combiner avec des évènements
+L'exemple ci-dessous créer un bouton pour tous les joueurs, qui peut être cliqué et fait en sorte que le vaisseau qui clique sur ce boutton soit téléporter dans un endroit aléatoire de la carte, et lui ajout 3 secondes d'invulnérabilité:
 
-Full example: https://github.com/pmgl/starblast-modding/blob/master/examples/warp_button.js
+Exemple entier: https://github.com/pmgl/starblast-modding/blob/master/examples/warp_button.js
 ```js
 var warp_button = {
   id: "warp",
@@ -600,17 +600,17 @@ this.event = function(event,game) {
 } ;
 ```
 
-##### Customizing the scoreboard or radar
-The built-in scoreboard can be replaced by your own custom scoreboard component. As soon as an UI component with id `"scoreboard"` or `"radar_background"` is created, you will be responsible for updating the scoreboard/radar. Your custom scoreboard/radar component does not have to include a `position` because it will automatically fill the area already reserved for the perspective UI Component.
+##### Customiser le radar et le tableau des scores
+Le tableau des scores peut être replacé par votre propre tableau. Quand un composant de l'UI a une id nomée `"scoreboard"` ou `"radar_background"` est créé, vous devrez mettre à jour le tableau des scores/radar. Votre composant du tableau des scores/radar customisé n'a pas a avoir de `position` car il remplira automatiquement la zone qui lui est réservée pour le composant de l'UI.
 
-##### Global UI
-You can use `game.setUIComponent({ options })` to set the UI to all current players in the game
+##### UI Globale
+Vous pouvez utiliser `game.setUIComponent({ options })` pour mettre en place une UI (boutton, message, etc) pour tous les vaisseaux en jeu.
 
-#### Other methods and instances
-##### Remove all ship's secondary slots
-Syntax: `ship.emptyWeapons()`
+#### Autres méthodes et instances
+##### Supprimer toutes les armes secondaires du cargo d'un vaisseau
+Syntaxe: `ship.emptyWeapons()`
 
-### Aliens
+### Extraterrestres
 Vous pouvez accéder à la liste des extraterrestres par le array `game.aliens`
 
 Vous pouvez aussi trouver un extraterrestre avec une id spécifique en utiliant `game.findAlieb(id)`, qui va renvoyer l'object représentant l'extraterrestre demandé, ou `null` s'il n'y a aucun extraterrestre avec l'id demandée.
