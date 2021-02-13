@@ -775,37 +775,37 @@ game.setObject({
 | transparent | whether the object's texture has transparency or not |
 | bumpScale | scale for bump mapping (default: 0.1) |
 
-#### Object instance options
+#### Options de l'objet
 | Option | Description |
 | - | - |
-| id | a unique identifier for this object instance (mandatory, allows changing the object afterwards) |
-| type | the object type definition |
-| position | coordinates for placing the object |
+| id | Un élément unique à l'objet qui permet de l'identifier (obligatoire, car il permet de modifier l'objet: coordonées, etc)|
+| type | Le type d'objet |
+| position | Coordonnées pour placer l'objet |
 | scale | allows to scale the object |
-| rotation | allows to rotate the object |
-| shape | Object's shape (used for creating hitbox)<br>**Note:** We recommend not to use this property as it usually doesn't work as expected |
-#### Accessing
-Game property `game.objects` stores all active 3D Objects maintained by the mod
+| rotation | Permet de faire effectuer une rotation à l'objet |
+| shape | Forme de l'objet (utilisée pour créer les boites de collisions<br>**Note:** Il est conseillé de ne pas utiliser, car elle ne fonctionne pas comme elle devrait fonctionner|
+#### Accés
+Le propriété `game.objects` garde tous les objets en 3d que le mod contient.
+Vous ne devriez pas modifier cette propriété, afin de faire en sorte que votre mod fonctionne doucement.
 
-You shouldn't modify this property in order to keep the mod run smoothly
-#### Changing or moving an object
-Use `game.setObject` again with the same object instance id.
+#### Changer ou faire bouger un objet
+Utilisez encore `game.setObject` avec l'id de l'objet.
 
-#### Removing an object
-`game.removeObject(id)` removes the object with given id. You can omit the id parameter, which will remove all custom objects in the scene.
-#### Example
-Working example, adding cube objects to the scenery: https://github.com/pmgl/starblast-modding/blob/master/examples/adding_cube.js
-### Reading game's detailed options
-#### Accessing
-Once the mod starts running, all detailed options will be passed into the `game.options` object
-#### Accessible fields
-This includes all properties defined in [`this.options`](#options), plus some extended fields listed below (except if they are not defined):
-| Field | Description |
+#### Supprimer un objet
+`game.removeObject(id)` supprime l'objet avec une id donnée. Vous pouvez ommetre le paramètre 'id', ce qui supprimera tous les objets customisés dans l'arrière plan.
+#### Exemple
+Exemple qui marche: ajouter des cubes (objet) dans l'arrière plan en jeu: https://github.com/pmgl/starblast-modding/blob/master/examples/adding_cube.js
+### Les options détaillés de la partie
+#### Accés
+Une fois que le mod a démarré, toutes les options détaillés passerons dans l'object `game.options`
+#### Champs accessibles
+Cela inclut toutes les propriétés définies dans [`this.options`](#options), et également des champs étendus listés çi dessous (sauf s'ils ne sont pas définis):
+| Champ | Description |
 | - | - |
-| bouncing_lasers | if bouncing lasers is enabled or not |
-| max_tier_lives | number of lives when player reaches ships with the highest level (defined in `max_level` option) |
-#### Fields accesibles dans le mode équipe
-| Field | Description |
+| bouncing_lasers | Si les lasers rebondissant sont activés ou pas |
+| max_tier_lives | Le nombre de vie quand le joueur a atteint le vaisseau maximal autorisé (définit dans l'option `max_level`) | 
+#### Champs accesibles dans le mode équipe
+| Champ | Description |
 | - | - |
 | teams | Un array représentant les informations basiques des différentes équipes: <br>`base_name`: Nom de la station<br>`faction`: Nom de la faction de la station<br>`hue`: la couleur de l'équipe|
 | crystal_capacity | an array presenting the capacity of the stations in the increasing level order |
