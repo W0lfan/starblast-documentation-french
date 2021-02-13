@@ -804,13 +804,13 @@ This includes all properties defined in [`this.options`](#options), plus some ex
 | - | - |
 | bouncing_lasers | if bouncing lasers is enabled or not |
 | max_tier_lives | number of lives when player reaches ships with the highest level (defined in `max_level` option) |
-#### Team mode specific accessible fields
+#### Fields accesibles dans le mode équipe
 | Field | Description |
 | - | - |
-| teams | an array represent teams' most basic info<br>each item in the array contains:<br>`base_name`: name of the base<br>`faction`: faction name<br>`hue`: team hue |
+| teams | Un array représentant les informations basiques des différentes équipes: <br>`base_name`: Nom de la station<br>`faction`: Nom de la faction de la station<br>`hue`: la couleur de l'équipe|
 | crystal_capacity | an array presenting the capacity of the stations in the increasing level order |
-| deposit_shield<br>spawning_shield<br>structure_shield | an array presenting the the stations' deposits/spawnings/small structures shield in the increasing level order |
-| deposit_regen<br>spawning_regen<br>structure_regen | an array presenting the the stations' deposits/spawnings/small structures regeneration in the increasing level order |
+| deposit_shield<br>spawning_shield<br>structure_shield | Un array qui représente la vie des dépôts, spawneurs (modules permétant aux vaisseaux d'apparaître), petits modules, du plus petit au plus grand niveau. |
+| deposit_regen<br>spawning_regen<br>structure_regen | Un array qui représente la régénération des dépôts, spawneurs (modules permétant aux vaisseaux d'apparaître), petits modules, du plus petit au plus grand niveau.|
 
 ### Assigner des propriétés personalisées à des entités/objets
 Vous pouvez assigner des propriétés à des entités du jeu (ou des objects) comme les notes annexes et indicateurs.
