@@ -611,26 +611,26 @@ You can use `game.setUIComponent({ options })` to set the UI to all current play
 Syntax: `ship.emptyWeapons()`
 
 ### Aliens
-You can access to the list of aliens through the array `game.aliens`
+Vous pouvez accéder à la liste des extraterrestres par le array `game.aliens`
 
-You can also find an alien with specific id using `game.findAlien(id)`, which returns an object represent the matched alien or `null` (if there are no aliens matching the provided id)
-#### Creation
-To create an alien, use `game.addAlien({ options })`
+Vous pouvez aussi trouver un extraterrestre avec une id spécifique en utiliant `game.findAlieb(id)`, qui va renvoyer l'object représentant l'extraterrestre demandé, ou `null` s'il n'y a aucun extraterrestre avec l'id demandée.
 
-List of accepted options:
+#### Création
+Pour créer un extraterrestre, utilisez `game.addAlien({ options })`
+Listes des options acceptées:
 
-(Note: Server will response with `Incorrect data` when at least one input property value is improper)
-| Option | Description | Default value (if omitted) |
+(Note: Le serveur va répondre par `Incorrect data` si au moins une de ces valeurs est fausse)
+| Option | Description | Valeur par défaut (si omis) |
 | - | - | - |
-| x | X coordinate | 0 |
-| y | Y coordinate | 0 |
-| vx | Velocity vector X component | 0 |
-| vy | Velocity vector Y component | 0 |
-| code | Type of alien, must be an integer in range [10-20] | 10 |
-| level | Level of the alien, in range [0-X] where X depends of the alien type | 0 |
-| points | The number of points you earn when you kill this alien | None |
-| crystal_drop | The crystal amount to be dropped when this alien is killed | None |
-| weapon_drop | The code of a collectible weapon to be dropped by this alien when killed | None |
+| x | Coordonnées X | 0 |
+| y | Coordonnées Y | 0 |
+| vx | Vitesse dans une direction X | 0 |
+| vy | Vitesse dans une direction Y | 0 |
+| code | Type d'extraterrestre, le nombre doit être entre [10-20] | 10 |
+| level | Niveau d'un extraterrestre, entre [0-X] où X dépend du type d'extraterrestre | 0 |
+| points | Le nombre de points que va donner l'extraterrestre une fois tué | None |
+| crystal_drop | Le nombre de cristaux que va lâcher l'extraterrestre une fois tué | None |
+| weapon_drop | Le code d'une arme secondaire qui peut être lâchée par un extraterrestre quand il est tué | None |
 
 Voici la liste des codes d'extratrrestres (eliens) disponibles:
 | Code | Nom de l'extraterrestre |
