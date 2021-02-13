@@ -436,78 +436,78 @@ You have read access to the ship’s main fields and options:
 | healing | whether the ship's lasers are in healing mode or not |
 
 #### Configuration
-You can set different options on the ships. For example:
+Vous pouvez mettre en place différentes options sur les vaisseaux. Par exemple:
 ```
 > game.ships[0].set({x:0,y:0});
 > █
 ```
-Will move the first ship in the list to the center of the map
+Ceci va faire bouger le premier vaisseau de la liste au centre de la carte.
 
-List of accepted options when using `ship.set`:
-| Option | Description | Server response error message<br>(if improper) |
+Liste des options acceptées lorsque `ship.set` est utilisé:
+| Option | Description |  Réponse du serveur si erreur<br>(if improper) |
 | - | - | - |
-| x | X coordinate | Wrong coordinate |
-| y | Y coordinate | Wrong coordinate |
-| vx | Velocity vector X component | Wrong coordinate |
-| vy | Velocity vector Y component | Wrong coordinate |
-| invulnerable | Use to set the ship invulnerable for X ticks (e.g. 60 for one second invulnerability) | Wrong invulnerable time |
-| type | changes the type of ship (use the ship code, e.g. `{type:403}` ) | None |
-| angle | changes the direction the ship is facing | Wrong angle |
-| score | sets player's score | Wrong score |
-| idle | set to true to force the ship to stay idle (and false to revert) | None |
-| shield | sets the value of the shield | Wrong shield value |
-| generator | sets the value of the generator | Wrong generator value |
-| healing | sets ship's lasers mode to healing (true or false) | None |
-| crystals | sets ship's crystal ammount | Wrong crystals |
-| stats | sets the stats upgrades of the ship | None |
-| kill | Set `kill: (any "truthy" value, e.g: true)` to destroy the ship | No violation |
-| team | Changes the team this ship belongs to (in range [0-X] where X is teams - 1) | None |
-| hue | Sets the color of the ship (range [0-359])![Hue map](https://i.stack.imgur.com/YOBFy.png) | None |
+| x | Coordonnée X | Wrong coordinate |
+| y | Coordonnée Y | Wrong coordinate |
+| vx | Vitesse du vaisseau dans une direction X | Wrong coordinate |
+| vy | Vitesse du vaisseau dans une direction Y | Wrong coordinate |
+| invulnerable | Rend le vaisseau invulnérable pour X ticks (exemple: 60 ticks pour unen seconde d'invulnérabilité) | Wrong invulnerable time |
+| type | Change le type du vaisseau (utiliser le code du vaisseau, exemple: `{type:403}` ) | None |
+| angle | Change la direction dans laquelle le vaisseau regarde | Wrong angle |
+| score | Met en place le score du vaisseau | Wrong score |
+| idle | Met `true` pour faire en sorte que le vaisseau soit en mode idle (inactif) (et false pour inverser) | None |
+| shield | Met en place la valeur du bouclier | Wrong shield value |
+| generator | Met en place la valeur du générateur | Wrong generator value |
+| healing | Met les lasers du vaisseau sur le status de soignant (true ou false) | None |
+| crystals | Donner un certain montant de crystaux au vaisseau | Wrong crystals |
+| stats | Met en place les statistiques d'un vaisseau | None |
+| kill | Mettre `kill: (any "truthy" value, ex: true)` pour détruire le vaisseau | No violation |
+| team | Change l'équipe du vaisseau (entre [0-X] où X est le nombre d'équipes - 1) | None |
+| hue | Donne une certain couleur d'un vaisseau (entre [0-359])![Hue map](https://i.stack.imgur.com/YOBFy.png) | None |
 
 #### Intermission
-You can send the ship to intermission (a screen with results, offering to respawn). This screen allows you to display custom results information:
+Vous pouvez envoyer à un vaisseau une "entracte", qui est un écran avec des résultats, et permettant de réapparaitre. Cet écran vous permet de donner des informations personnalisées:
 ```
 > game.ships[0].intermission({"Best Achievement":"Managed to run the mod","Score":1234});
 > █
 ```
-#### Triggering and Customizing player's GameOver screen
-You can also trigger the gameover screen for any given ship. Here again, you can pass results information to pass on to the player:
+#### Faire apparaitre et customiser la fenêtre de Game Over pour le vaisseau
+Vous pouvez aussi faire en sorte qu'un vaisseau ait un écran Game Over. Ici encore, vous pouvez transmettre des informations qui seront transmises au joueur:
 ```
 > game.ships[0].gameover({"Rating":"Can do better","Score":1234});
 > █
 ```
-#### Instructor
-##### Calling instructor
-You can have the flight instructor send instructions to the player. For this find the players’s ship and use:
+#### Instructeur
+##### Appeller l'instructeur
+Vous pouvez avoir un instructeur qui va evoyer des informations au joueur. POur cela, trouvez le vaisseau du joueur et utilisez: 
 ```
 > ship.instructorSays("Hello!")
 > █
 ```
-You can hide the instructor window using:
+Vous pouvez cacher la fenêtre de l'instructeur en utilisant:
 ```
 > ship.hideInstructor()
 > █
 ```
-You can later show it again using:
+Vous pouvez le montrer plus tard avec:
 ```
 > ship.showInstructor()
 > █
 ```
-A second, optional parameter allows you to choose which one of the instructor characters will talk to the player. Example:
+Un paramètre optionel vous permet de choisir quel instructeur va parler au joueur. Exemple:
 ```
 > ship.instructorSays("Here is your report, Commander","Maria")
 > █
 ```
-##### Available characters
+##### Charactères disponibles
 |Lucina|Klaus|Maria|Kan|Zoltar|
 |-|-|-|-|-|
 |![Lucina](https://starblast.data.neuronality.com/img/tutorial-survival.png)|![Klaus](https://starblast.data.neuronality.com/img/tutorial-battleroyale.png)|![Maria](https://starblast.data.neuronality.com/img/tutorial-team.png)|![Kan](https://starblast.data.neuronality.com/img/tutorial-invasion.png)|![Zoltar](https://starblast.data.neuronality.com/img/tutorial-deathmatch.png)|
 
-#### Custom UI components
-##### General
-The mod can create custom UI components that will show up on the player’s screen. This is done by calling `setUIComponent` on the ship, passing in a component descriptor.
+#### Composants UI personnalisés
+##### Général
+Votre mod peut créer des composants personnalisés qui vont appraitre sur l'écran du joueur. C'est montré par la commabde `ship.setUIComponent` sur le vaisseau, passant à un descripteur de composant.
 
-For example:
+Par exemple:
 ```
 > ship.setUIComponent({
     id:"myid",
@@ -523,15 +523,15 @@ For example:
   })
 > █
 ```
-Here is the list of UIComponent's accepted options:
-| Option | Description | Default value<br>(if omitted) |
+Voici la liste des options acceptées pour les composants:
+| Option | Description | Valeur par défaut<br>(si omit) |
 | - | - | - |
-| id | a unique identifier for this component, mandatory | None |
-| position | expressed in percentage of the main screen, the position of the component [x,y,width,height]. Example: [45,45,10,10] creates a component in the center of the screen, which width and height are 10% of the screen width and height. | None |
-| visible | Whether the component is visible or not. Resend the same data with visible set to false to hide the component | true |
-| clickable | Whether this component can be clicked or not | false |
-| shortcut | When the component is clickable, a keyboard shortcut allowing to trigger the click event | None |
-| components | gives a list (array) of graphical features to render within the component, which will be described below | Empty array |
+| id | Un identifiant unique pour le composant| None |
+| position | Exprimé en pourcentage de l'écran de jeu, la position du composant [x,y,width,height]. Exemple: [45,45,10,10] créer un composant en plein milieu de l'écran, où la largeur et la hauteur sont 10% de l'écran largeur et hauteur.   | None |
+| visible | Si le composant est visible ou non. Renvoyer la même donnée avec `visible` mit sur`false` pour cacher le composant | true |
+| clickable | Si le composant peut être cliqué ou non | false |
+| shortcut | Quand le composant est cliqué, une touche du clavier peut reproduire le clic | None |
+| components | Donne une liste (array) caractéristiques graphiques pour mettre des éléments dans le composant. Décrit ci-dessous| Empty array |
 
 ##### Options acceptées pour les sous-composants
 | Option | Description | Value par défaut (si omis) |
