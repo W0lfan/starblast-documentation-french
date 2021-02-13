@@ -728,21 +728,20 @@ Once an asteroid is live and has an assigned id, you can set options to it. For 
 ```
 Will move the first asteroid in the list to the center of the map
 
-List of accepted options when using `asteroid.set`:
-| Option | Description | Server response error message<br>(if improper) |
+Listes des options accéptées lorsque `asteroid.set` est utilisé:
+| Option | Description | Réponse du serveur si erreur<br>(if improper) |
 | - | - | - |
-| x | X coordinate | Wrong coordinate |
-| y | Y coordinate | Wrong coordinate |
-| vx | Velocity vector X component | Wrong coordinate |
-| vy | Velocity vector Y component | Wrong coordinate |
-| size | Asteroid size in the range [1-100]<br>(note that changing asteroid size resets its life points) | Incorrect size |
-| kill | Set `kill: (any "truthy" value, e.g: true)` to destroy the asteroid | No violation |
+| x | coordonnée X  | Wrong coordinate |
+| y | coordonnée Y  | Wrong coordinate |
+| vx | Composante X du vecteur vitesse | Wrong coordinate |
+| vy | Composante Y du vecteur vitesse | Wrong coordinate |
+| size |La taille d'un astéroîdes, entre [1-100]<br>(notez que changer la taille d'un astéroïde lui permet de "régénérer" sa vie) | Incorrect size |
+| kill | Utilisez `kill: (any "truthy" value, e.g: true)` Pour détruire un astéroide | No violation |
 
-### Add 3D objects to the scenery
-The mod can create custom, textured 3D objects and add them to the scenery using `game.setObject` method. These objects have
-no physics for now (physics is planned in a near future).
+### Ajouter des objets en 3D dans l'arrière plan/le premier plan
+Votre mod peut créer des objets 3D customisées, avec des textures, et les ajouter à l'arrière plan/premier plan, en utilisant `game.setObject`. Ces objets n'ont pas de masse physique pour le moment (la masse physique est planifiée pour un futur proche).
 
-For example:
+Par exemple:
 ```js
 var cube = {
   id: "cube",
@@ -762,8 +761,8 @@ game.setObject({
 #### Object type options
 | Option | Description |
 | - | - |
-| id | a unique identifier for this object type, mandatory |
-| obj | a URL (HTTPS) to the OBJ file |
+| id | Un élément unique à l'objet qui permet de l'identifier (obligatoire, car il permet de modifier l'objet: coordonées, etc) |
+| obj | un lien (HTTPS) qui mène au fichier (OBJ) |
 | type | Object instance options, see the section below for more details |
 | diffuse | a URL (HTTPS) to a diffuse texture file (optional) |
 | emissive | a URL (HTTPS) to an emissive texture file (optional) |
@@ -772,7 +771,7 @@ game.setObject({
 | diffuseColor | diffuse color of the object, e.g. 0xFF0000 (for red) |
 | emissiveColor | emissive color of the object, e.g. 0x00FFFF (for cyan) |
 | specularColor | specular color of the object |
-| transparent | whether the object's texture has transparency or not |
+| transparent | Si la texture de l'objet est transparente ou pas |
 | bumpScale | scale for bump mapping (default: 0.1) |
 
 #### Options de l'objet
@@ -781,7 +780,7 @@ game.setObject({
 | id | Un élément unique à l'objet qui permet de l'identifier (obligatoire, car il permet de modifier l'objet: coordonées, etc)|
 | type | Le type d'objet |
 | position | Coordonnées pour placer l'objet |
-| scale | allows to scale the object |
+| scale | Permet de mettre l'objet à une certain échelle |
 | rotation | Permet de faire effectuer une rotation à l'objet |
 | shape | Forme de l'objet (utilisée pour créer les boites de collisions<br>**Note:** Il est conseillé de ne pas utiliser, car elle ne fonctionne pas comme elle devrait fonctionner|
 #### Accés
