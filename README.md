@@ -1,8 +1,8 @@
 # Starblast Modding
 
-**Note:** This is the GitHub version of the Official Documentation.
+**Note:** Ceci est la version Github de la Documentation de Starblast, traduite en français par Wolfan.
 
-Official version can be found here: https://starblastio.gamepedia.com/Modding_Tutorial
+La version officielle, en Anglais, peut être trouvée ici: https://starblastio.gamepedia.com/Modding_Tutorial
 <details>
   <summary markdown="span">Contents</summary>
 
@@ -88,28 +88,25 @@ Official version can be found here: https://starblastio.gamepedia.com/Modding_Tu
     1.  **[Code resources](#code-resources)**
 </details>
 
-## Information
-![Standard Modding Interface, you can see the minimap of the mod in the bottom right corner while the mod is running](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ModdingInterface.png)
+## Informations
+![Standard Modding Interface, vous pouvez voir la petite carte du mod à la droite quand le mod est en train de tourner](https://raw.githubusercontent.com/Bhpsngum/img-src/master/ModdingInterface.png)
 
-*Standard Modding Interface, you can see the minimap of the mod in the bottom right corner while the mod is running*
+*Standard Modding Interface, vous pouvez voir la petite carte du mod à la droite quand le mod est en train de tourner*
 
+L'interface de l'éditeur de mod peut être trouvé ici: https://starblast.io/modding.html ([ECP](https://starblastio.gamepedia.com/Elite_Commander_Pass) requis)
 
-Starblast Modding interface can be found here: https://starblast.io/modding.html ([ECP](https://starblastio.gamepedia.com/Elite_Commander_Pass) required)
+L'éditeur de Mod Starblast vous permet de créer des mods customisées pour Starblast? Cette intérface est en fait un éditeur de code dans un onglet de votre navigateur à la gauche, et une console à la droite. L'éditeur de code est l'endroit où vous devez écrire le code JavaScript pour votre mod. La console est l'endroit où vous écrivez des commandes pour démarrer votre mod, l'arrêter ou intéragir avec quand le mod est en train de tourner.
 
+Le langage de programmation utilisé pour l'éditeur de mod est le [JavaScript (ECMAScript)](https://www.w3schools.com/js/DEFAULT.asp)
 
-Starblast Modding interface allows you to create custom mods for Starblast. The interface is made of a code editor window, on the left, and a console window, on the right. The code editor is where you type the JavaScript code for your mod. The console is where you can type commands to start your mod, stop it or interact with it while it is running.
+## Documentation et Tutoriels
+### Notes Importantes
+Dans les nouvelles versions des mises à jours des navigateurs, vous ne pouvez pas utiliser l'éditeur de mod dans un onglet de navigation privée car des caractéristiques de l'éditeur ne sont pas disponibles dans ce type d'onglets.
 
+Et faites en sorte de lire ce qui va suivre du début à la fin pour ne rien rater!
 
-Main programming language uses in this interface is [JavaScript (ECMAScript)](https://www.w3schools.com/js/DEFAULT.asp)
-
-## Documentation and Tutorial
-### Important Notes
-In newer version of browsers' updates, you can't use the Modding Client in incognito mode anymore as they restrict some incognito features which are used by the editor.
-
-And make sure to read all of these from the start to the end so that you won't miss any important info!
-
-### Creating your first mod
-In the Mod Code window, type the code for your first mod:
+### Créer votre premier mod
+Dans votre éditeur de mod, tapez ceci pour votre premier mod:
 ```js
 this.options = {
   root_mode: "survival",
@@ -120,17 +117,17 @@ this.tick = function(game) {
 };
 ```
 
-### Running and testing a mod
-#### Change region
-Once your mod code is ready, in the console, start by selecting your preferred region for modding using the command `region <region name>`. For example with Europe:
+### Démarrer et tester votre mod
+#### Changer la region
+Lorsque votre mod est prêt, commencez par choisir votre région préférée dans la console en tapant `region <region name>`. Par exemple avec l'Europe:
 ```
 > region Europe
 Region set to Europe
 > █
 ```
-(Currently modding is only available in these 3 zones: Europe, America, Asia)
-#### Start mod
-Then to start running your mod, type command `start`:
+(Pour l'instant, le modding est disponible dans seulement trois zones: l'Eruope, l'Amérique et l'Asie)
+#### Démarrer le mod
+Ensuite, pour démarrer votre mod, tapez `start`:
 ```
 > start
 Mod started
@@ -138,35 +135,35 @@ https://starblast.io#1234@12.34.56.78:2000
 Use 'test' to open game frame for testing
 > █
 ```
-#### Test the mod
-As instructed by the console, you may want to open a test window to join your modded game with a Starblast client. Type `test`:
+#### Tester votre mod
+Comme dit par la console, vous voudrez sûrement ouvrir une nouvelle fenêtre pour rejoindre votre partie moddée. Ecrivez `test`:
 ```
 > test
 > █
 ```
-#### ALWAYS keep the Mod Editor Tab being active while running the mod!
-This is one of the most important things you need to keep in your mind!
+#### TOUJOURS garder l'éditeur de mod dans un onglet actif quand le mod est en train de tourner!
+C'est uen des choses les plus importants dont vous devez vous souvenir.
 
-Why? Because that's nuances of how browsers work.
+Pourquoi? C'est parce que c'est comme ça que les navigateurs fonctionnent.
 
-Browsers slow down all javascript in non-active tabs in order to decrease the CPU processes.
+Votre navigateur va commander à ralentir tous les scripts de JavaScript qui sont dans les onglets inactifs afin de réduire le processus de votre GPU.
 
-For some mods (e.g Battle Royale), it doesn't matter like with ship tree and options only,
+Pour certains modes comme le Battle Royale, ça ne fait rien car c'est seulement des vaisseaux et des options.
 
-but for other mods where some logic in tick function or events - it will affect them A LOT!
+mais pour les autres mods où il y a de la logique dans les fonctions tick ou les évènements - cela va beaucoup les affecter!
 
-Ticks start to work slower and slower...
+Les ticks vont commancer à marcher de moins en moins vite...
 
-Soon everything will be lagging in game, like any reactions on mod buttons, any mod logic like spawning something in tick, etc.
+Bientôt, tout lagera dans la partue, comme toutes les réactions sur les bouttons, la logique du code qui fait apparaitre quelque chose, etc.
 
-And... depending on mod complexity it can just CRASH THE ENTIRE MOD - locally, server will continue to work so game will work but without mod logic anymore.
+Et....cela dépend de la complexité du mod mais cela peut faire crasher le mod en entier - localement, le serveur continuera à marcher, la partie aussie, mais le code actual ne fonctionnera plus et n'impactera plus la partie.
 
-So, always keep the mod editor tab online or you will have unpredictable results!
+Donc, gardez toujours votre éditeur de mod dans un onglet en ligne ou des choses inprédictibles se passeront!
 
-Also, you need to have a stable internet connection if you don't want your mods becoming laggy.
+Ausi, vous devez avoir une connexion internet stable si vous ne voulez pas que votre mod subisse des lags.
 
-#### Stop the currently running mod
-You can stop your mod anytime by using command `stop`. Note that this will kill the game and disconnect all connected players:
+#### Arrêtez le mod en cours
+Vous pouvez arrêter le mod quand vous voulez en utilisant la commande `stop`. Ceci va déconnecter tous les joueurs et détruire les données existantes de cette partie.
 ```
 > stop
 Mod stopped
