@@ -17,7 +17,7 @@ La version officielle, en Anglais, peut être trouvée ici: https://starblastio.
         1.  **[Changer la région](#changer-la-région)**
         1.  **[Démarrer le mod](#démarrer-le-mod)**
         1.  **[Tester le mod](#tester-votre-mod)**
-        1.  **[TOUJOURS garder l'éditeur de mod dans un onglet actif quand le mod est en train de tourner!](#toujours-garder-léditeur-de-mod-dans-un-onglet-actf-quand-le-mod-est-en-train-de-tourner)**
+        1.  **[TOUJOURS garder l'éditeur de mod dans un onglet actif quand le mod est en train de tourner!](#toujours-garder-léditeur-de-mod-dans-un-onglet-actif-quand-le-mod-est-en-train-de-tourner)**
         1.  **[Arrêter le mod en coursr](#arrêter-le-mod-en-cours)**
         1.  **[Autres commandes du terminal](#autres-commandes-du-terminal)**
             1.  **[echo](#echo)**
@@ -26,7 +26,7 @@ La version officielle, en Anglais, peut être trouvée ici: https://starblastio.
     1.  **[Parties du code principal](#parties-du-code-principal)**
         1.  **[Options](#options)**
             1.  **[Définition](#définition)**
-            1.  **[Vaisseaux customisés et arbre de vaiseaux customisés ](#vassieaux-customisés-et-arbre-de-vaisseaux-customisés)**
+            1.  **[Vaisseaux customisés et arbre de vaiseaux customisés ](#vaisseaux-customisés-et-arbre-de-vaisseaux-customisés)**
             1.  **[Customiser le chat d'émojis](#customiser-le-chat-d-émojis)**
             1.  **[Carte d'astéroïdes customisée](#carte-d-astéroïdes-customisée)**
             1.  **[Options spécifiques du mode survie](#options-spécifiques-du-mode-survie)**
