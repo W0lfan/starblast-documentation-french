@@ -7,88 +7,88 @@
 
 La version officielle, en Anglais, peut être trouvée ici: https://starblastio.gamepedia.com/Modding_Tutorial
 <details>
-  <summary markdown="span">Contents</summary>
+  <summary markdown="span">Contenu</summary>
 
-1.  **[Information](#information)**
-1.  **[Documentation and Tutorial](#documentation-and-tutorial)**
-    1.  **[Important Notes](#important-notes)**
-    1.  **[Creating your first mod](#creating-your-first-mod)**
-    1.  **[Running and testing a mod](#running-and-testing-a-mod)**
-        1.  **[Change region](#change-region)**
-        1.  **[Start mod](#start-mod)**
-        1.  **[Test the mod](#test-the-mod)**
-        1.  **[ALWAYS keep the Mod Editor Tab being active while running the mod!](#always-keep-the-mod-editor-tab-being-active-while-running-the-mod)**
-        1.  **[Stop the currently running mod](#stop-the-currently-running-mod)**
-        1.  **[Other terminal commands](#other-terminal-commands)**
+1.  **[Informations](#informations)**
+1.  **[Documentation et Tutoriels](#documentation-et-tutoriels)**
+    1.  **[Notes importantes](#notes-importantes)**
+    1.  **[Créer votre premier mod](#créer-votre-premier-mod)**
+    1.  **[Démarrer et tester votre mod](#démarrer-et-tester-votre-mod)**
+        1.  **[Changer la région](#changer-la-région)**
+        1.  **[Démarrer votre mod](#Démarrer-votre-mod)**
+        1.  **[Tester votre mod](#tester-votre-mod)**
+        1.  **[TOUJOURS garder l'éditeur de mod dans un onglet actif quand le mod est en train de tourner!](#toujours-garder-l-éditeur-de-mod-dans-un-onglet-actf-quand-le-mod-est-en-train-de-tourner)**
+        1.  **[Arrêter le mod en train de tourner](#arrêter-le-mod-en-train-de-tourner)**
+        1.  **[Autres commandes du terminal](#autres-commandes-du-terminal)**
             1.  **[echo](#echo)**
             1.  **[clear](#clear)**
             1.  **[help](#help)**
-    1.  **[Main code parts](#main-code-parts)**
+    1.  **[Parties du code principal](#parties-du-code-principal)**
         1.  **[Options](#options)**
-            1.  **[Definition](#definition)**
-            1.  **[Custom ships and custom tree](#custom-ships-and-custom-tree)**
-            1.  **[Customizing the emote-chat system](#customizing-the-emote-chat-system)**
-            1.  **[Custom asteroids maps](#custom-asteroids-maps)**
-            1.  **[Survival mode specific options](#survival-mode-specific-options)**
-            1.  **[Team mode specific options](#team-mode-specific-options)**
-            1.  **[Deatmatch mode specific options](#deatmatch-mode-specific-options)**
+            1.  **[Définition](#définition)**
+            1.  **[Vaisseaux customisés et arbre de vaiseaux customisés ](#vassieaux-customisés-et-arbre-de-vaisseaux-customisés)**
+            1.  **[Customiser le chat d'émojis](#customiser-le-chat-d-émojis)**
+            1.  **[Carte d'astéroïdes customisée](#carte-d-asétéroïdes customisée)**
+            1.  **[Options spécifiques du mode survie](#options-spécifiques-du-mode-survie)**
+            1.  **[Spécifiques options pour le mode équipe](#options-spécifiques-pour-le-mod-équipe)**
+            1.  **[Options spécifiques du Deathmatch Pro](#options-spécifiques-du-deathmatch-pro)**
         1.  **[Ticking](#ticking)**
-            1.  **[Definition](#definition-1)**
-        1.  **[Events](#events)**
-            1.  **[General](#general)**
-            1.  **[Available events](#available-events)**
+            1.  **[Définition](#définition-1)**
+        1.  **[Evènements](#évènements)**
+            1.  **[Général](#général)**
+            1.  **[Evènements dosponibles](#évènements-disponibles)**
     1.  **[Game step](#game-step)**
-        1.  **[Definition](#definition-2)**
-        1.  **[Unit](#unit)**
-        1.  **[Uses](#uses)**
-    1. **[Ships](#ships)**
-        1.  **[Accessible fields](#accessible-fields)**
+        1.  **[Définition](#définition-2)**
+        1.  **[Unité](#unité)**
+        1.  **[Utilisation](#utilisation)**
+    1. **[Vaisseaux](#vaisseaux)**
+        1.  **[Appeller l'instructeur](#champs-disponibles)**
         1.  **[Configuration](#configuration)**
-        1.  **[Instructor](#instructor)**
-            1.  **[Calling instructor](#calling-instructor)**
-            1.  **[Available characters](#available-characters)**
-        1.  **[Custom UI components](#custom-ui-components)**
-            1.  **[General](#general-1)**
-            1.  **[Subcomponents' accepted options](#subcomponents-accepted-options)**
-            1.  **[Combining with events](#combining-with-events)**
-            1.  **[Customizing the scoreboard or radar](#customizing-the-scoreboard-or-radar)**
-            1.  **[Global UI](#global-ui)**
-        1.  **[Other methods and instances](#other-methods-and-instances)**
-            1.  **[Remove all ship's secondary slots](#remove-all-ships-secondary-slots)**
-    1.  **[Aliens](#aliens)**
-        1.  **[Creation](#creation)**
+        1.  **[Instructeur](#instructeur)**
+            1.  **[Appeller l'instructeur](#appeller-l-instructeur)**
+            1.  **[Charactères disponibles](#charcatères-disponibles)**
+        1.  **[Composants UI personnalisés](#composants-ui-personnalisés)**
+            1.  **[Général](#général-1)**
+            1.  **[Options acceptées pour les sous-composantss](#soptions-acceptées-pour-les-sous-composants)**
+            1.  **[Combiner avec des évènements](#ccombiner-avec-des-évènements)**
+            1.  **[Customiser le radar et le tableau des scores](#customiser-le-radar-et-le-tableau-des-scores)**
+            1.  **[UI Globale](#ui-globale)**
+        1.  **[Autres méthodes et instances](#autres-méthodes-et-instances)**
+            1.  **[Supprimer toutes les armes secondaires du cargo d'un vaisseau](#rsupprimer-toutes-les-armes-secondaires-du-cargo-d-un-vaisseau)**
+    1.  **[Extraterrestres](#extraterrestres)**
+        1.  **[Création](#création)**
         1.  **[Configuration](#configuration-1)**
-    1.  **[Collectibles](#collectibles)**
-        1.  **[Creation](#creation-1)**
-        1.  **[Accessing](#accessing)**
-    1.  **[Asteroids](#asteroids)**
-        1.  **[Creation](#creation-2)**
+    1.  **[Armes secondaires](#armes-secondaires)**
+        1.  **[Création](#création-1)**
+        1.  **[Accès](#accès)**
+    1.  **[Astéroïdes](#astéroïdes)**
+        1.  **[Création](#création-2)**
         1.  **[Configuration](#configuration-2)**
-    1.  **[Add 3D objects to the scenery](#add-3d-objects-to-the-scenery)**
+    1.  **[Ajouter des objets en 3D dans l'arrière plan/le premier plan](#ajouter-des-objets-en-3D-dans-l-arrière-planle-premier-plan)**
         1.  **[Object type options](#object-type-options)**
-        1.  **[Object instance options](#object-instance-options)**
-        1.  **[Accessing](#accessing-1)**
-        1.  **[Changing or moving an object](#changing-or-moving-an-object)**
-        1.  **[Removing an object](#removing-an-object)**
-        1.  **[Example](#example)**
-    1.  **[Reading game's detailed options](#reading-games-detailed-options)**
-        1.  **[Accessing](#accessing-2)**
-        1.  **[Accessible fields](#accessible-fields-1)**
-        1.  **[Team mode specific accessible fields](#team-mode-specific-accessible-fields)**
-    1.  **[Assigning custom properties to some entities/objects](#assigning-custom-properties-to-some-entitiesobjects)**
-        1.  **[Accessing and assigning](#accessing-and-assigning)**
-        1.  **[Supported objects/entities](#supported-objectsentities)**
-        1.  **[Example](#example-1)**
-    1.  **[Other game instances and methods](#other-game-instances-and-methods)**
-        1.  **[Set custom maps in-game](#set-custom-maps-in-game)**
-        1.  **[Lock/unlock the mod from attracting new players](#lockunlock-the-mod-from-attracting-new-players)**
-    1.  **[Common problems and how to fix them](#common-problems-and-how-to-fix-them)**
-        1.  **[Black screen issue](#black-screen-issue)**
-        1.  **[My mod closed accidentally but the game is not stopped](#my-mod-closed-accidentally-but-the-game-is-not-stopped)**
-1.  **[Community resources](#community-resources)**
-    1.  **[Tutorial and Documentation](#tutorial-and-documentation)**
-    1.  **[Tools](#tools)**
-    1.  **[Code resources](#code-resources)**
+        1.  **[Options de l'objet](#options-de-l-objet)**
+        1.  **[Accès](#accès-1)**
+        1.  **[Changer ou faire bouger un objet](#changer-ou-faire-bouger-un-objet)**
+        1.  **[Supprimer un objet](#supprimer-un-objet)**
+        1.  **[Exemple](#exemple)**
+    1.  **[Les options détaillés de la partie](#reading-games-detailed-options)**
+        1.  **[Accès](#accès-2)**
+        1.  **[Champs accessibles](#champs-accessibles-1)**
+        1.  **[Champs accesibles dans le mode équipe](#champs-accessibles-dans-le-mode-équipe)**
+    1.  **[Assigner des propriétés personalisées à des entités/objets](#assigner-des-prpriétés-personalisées-à-des-entitésobjets)**
+        1.  **[Accéder et assigner](#accéder-et-assigner)**
+        1.  **[Entités/Objets supportés](#entitésobjets-supportés)**
+        1.  **[Exemples](#exemples-1)**
+    1.  **[Autres instances de jeu et méthodes](#autres-instances-de-jeu-et-méthodes)**
+        1.  **[Mettre une carte customisée en jeu](#mettre-une-carte-customisée-en-jeu)**
+        1.  **[Fermer/ouvrir le mod à la vue des nouveaux joueurs](#fermerouvrir-le-mod-à-la-vue-des-nouveaux-joueurs)**
+    1.  **[Problèmes communs et comment les fixer](#problèmes-communs-et-comment-les-fixer)**
+        1.  **[Problème de l'écran noir](#problème-de-l-écran-noir)**
+        1.  **[Mon mod s'est arrêté accidentellement mais la partie ne s'est pas arrêtée](#mond-mod-s-est-arrêté-accidentelement-mais-la-partie-ne-s-est-pas-arrêtée)**
+1.  **[Ressources de la communauté](#ressources-de-la-communauté)**
+    1.  **[Tutoriels et documentation](#tutoriels-et-documentation)**
+    1.  **[Outlis](#outils)**
+    1.  **[Ressources de codes](#ressources-de-codes)**
 </details>
 
 ## Informations
@@ -846,7 +846,7 @@ Vous pouvez utiliser `game.setCustomMap(<map pattern>)` pour mettre une carte cu
 
 Où <map pattern> a le même format que [la carte customisée dans `this.options`](#custom-asteroids-maps)
 
-#### Lock/unlock the mod from attracting new players
+#### Ouvir/Fermer le mod à la vue des nouveaux joueurs
 Utilisez `game.setOpen(true/false)` pour fermer/ouvrir votre mod (visibilité par les joueurs) (seulement pour les mods du [Modding Space (https://starblastio.gamepedia.com/Modding_Space).
 
 Il y a aussi des propriétés booléennes `game.is_open` est utiliser pour déterminer si le mod est ouvert ou pas.
@@ -875,6 +875,7 @@ Rapellez-vous que vous ne pouvez pas vous reconnecter au serveur qui a crashé, 
 ### Tutoriels et documentation
 * [How to add ship to the mod - by InterdictorSD](https://www.youtube.com/watch?v=3b2zKArOkXk)
 * [Modding Live #2 by PMGL](https://www.twitch.tv/videos/270359062)
+* [General modding tutorial by Wolfan](https://www.youtube.com/watch?v=35SM5rFteIs&t)
 
 ### Outlis
 * [Map Editor](https://bhpsngum.github.io/starblast/mapeditor/)
