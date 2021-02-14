@@ -28,7 +28,7 @@ La version officielle, en Anglais, peut être trouvée ici: https://starblastio.
             1.  **[Définition](#définition)**
             1.  **[Vaisseaux customisés et arbre de vaiseaux customisés ](#vassieaux-customisés-et-arbre-de-vaisseaux-customisés)**
             1.  **[Customiser le chat d'émojis](#customiser-le-chat-d-émojis)**
-            1.  **[Carte d'astéroïdes customisée](#carte-d-asétéroïdes customisée)**
+            1.  **[Carte d'astéroïdes customisée](#carte-d-astéroïdes customisée)**
             1.  **[Options spécifiques du mode survie](#options-spécifiques-du-mode-survie)**
             1.  **[Spécifiques options pour le mode équipe](#options-spécifiques-pour-le-mod-équipe)**
             1.  **[Options spécifiques du Deathmatch Pro](#options-spécifiques-du-deathmatch-pro)**
