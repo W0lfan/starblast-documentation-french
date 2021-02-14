@@ -15,8 +15,8 @@ La version officielle, en Anglais, peut être trouvée ici: https://starblastio.
     1.  **[Créer votre premier mod](#créer-votre-premier-mod)**
     1.  **[Démarrer et tester votre mod](#démarrer-et-tester-votre-mod)**
         1.  **[Changer la région](#changer-la-région)**
-        1.  **[Démarrer votre mod](#Démarrer-votre-mod)**
-        1.  **[Tester votre mod](#tester-votre-mod)**
+        1.  **[Démarrer le mod](#Démarrer-le-mod)**
+        1.  **[Tester le mod](#tester-le-mod)**
         1.  **[TOUJOURS garder l'éditeur de mod dans un onglet actif quand le mod est en train de tourner!](#toujours-garder-l-éditeur-de-mod-dans-un-onglet-actf-quand-le-mod-est-en-train-de-tourner)**
         1.  **[Arrêter le mod en train de tourner](#arrêter-le-mod-en-train-de-tourner)**
         1.  **[Autres commandes du terminal](#autres-commandes-du-terminal)**
