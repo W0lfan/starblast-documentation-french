@@ -121,7 +121,7 @@ this.tick = function(game) {
 ```
 
 ### Démarrer et tester votre mod
-#### Changer la region
+#### Changer la région
 Lorsque votre mod est prêt, commencez par choisir votre région préférée dans la console en tapant `region <region name>`. Par exemple avec l'Europe:
 ```
 > region Europe
